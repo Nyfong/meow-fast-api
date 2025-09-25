@@ -1,7 +1,10 @@
 from fastapi import APIRouter, Depends
 from my_fastapi_project.services.user_service import UserService
+from my_fastapi_project.services.prompt_string_service import PromptStringService
+
 
 router = APIRouter(prefix="/users", tags=["Users"])
+
 
 @router.get("/")
 def get_users(service: UserService = Depends()):
