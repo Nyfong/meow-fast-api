@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 from scalar_fastapi import get_scalar_api_reference
-
+from fake_db import fake_items  # Import the fake_db list
 app = FastAPI()
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
+#the scalar view ui
 @app.get("/scalar", include_in_schema=False)
 async def scalar_html():
     return get_scalar_api_reference(
@@ -15,3 +16,10 @@ async def scalar_html():
         # Avoid CORS issues (optional)
         scalar_proxy_url="https://proxy.scalar.com",
     )
+
+
+#let return array
+
+@app.get("/items")
+async def read_items():
+    return fake_items
