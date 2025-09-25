@@ -1,8 +1,9 @@
-# main.py
 from fastapi import FastAPI
+from my_fastapi_project.controllers import user_controller
+from my_fastapi_project.core.docs import setup_scalar
 
 app = FastAPI()
 
-@app.get("/")
-async def root():
-    return {"message": "Hello, World!"}
+setup_scalar(app)  # mount scalar docs
+
+app.include_router(user_controller.router)
