@@ -10,3 +10,4 @@ class PromptStringService:
     
     def create_prompt(self, prompt:str):
         return self.repository.create_prompt(prompt)
+    
